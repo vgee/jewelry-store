@@ -30,4 +30,11 @@ describe('createCheckoutSession', () => {
     expect(res).toHaveProperty('id')
     expect(res).toHaveProperty('url')
   })
+
+  it('creates session for items with price_id', async () => {
+    const mod = await import('../checkout')
+    const res = await mod.createCheckoutSession({ items: [{ price_id: 'price_123', quantity: 2 }] })
+    expect(res).toHaveProperty('id')
+    expect(res).toHaveProperty('url')
+  })
 })
